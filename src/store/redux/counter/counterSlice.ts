@@ -34,6 +34,6 @@ export const counteSlice = createAppSlice({
   },
 })
 
-export const counterSliceAction = counteSlice.actions
+export const counterSliceActions = counteSlice.actions
 
 export const counterSliceSelectors = counteSlice.selectors
