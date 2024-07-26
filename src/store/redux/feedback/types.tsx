@@ -1,3 +1,4 @@
 export interface likesAndDislikesSliceState {
-  count: number
+  likes: number
+  dislikes: number
 }

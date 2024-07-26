@@ -3,51 +3,34 @@ import { createAppSlice } from "store/createAppSlice"
 import { likesAndDislikesSliceState } from "./types"
 
 const likeInitialState: likesAndDislikesSliceState = {
-  count: 0,
+  likes: 0,
+  dislikes: 0,
 }
 
-const dislikeInitialState: likesAndDislikesSliceState = {
-  count: 0,
-}
-
-export const feedbackLikesSlice = createAppSlice({
+export const feedbackSlice = createAppSlice({
   name: "FEEDBACK_LIKES",
   initialState: likeInitialState,
   reducers: create => ({
     like: create.reducer((state: likesAndDislikesSliceState) => {
-      state.count = state.count + 1
+      state.likes = state.likes + 1
     }),
-    recetLikes: create.reducer((state: likesAndDislikesSliceState) => {
-      state.count = 0
-    }),
-  }),
-  selectors: {
-    count: (state: likesAndDislikesSliceState) => {
-      return state.count
-    },
-  },
-})
-
-export const feedbackDislikesSlice = createAppSlice({
-  name: "FEEDBACK_DISLIKES",
-  initialState: dislikeInitialState,
-  reducers: create => ({
     dislike: create.reducer((state: likesAndDislikesSliceState) => {
-      state.count = state.count + 1
+      state.dislikes = state.dislikes + 1
     }),
-    recetDislikes: create.reducer((state: likesAndDislikesSliceState) => {
-      state.count = 0
+    recetResults: create.reducer((state: likesAndDislikesSliceState) => {
+      state.likes = 0
+      state.dislikes = 0
     }),
   }),
   selectors: {
-    count: (state: likesAndDislikesSliceState) => {
-      return state.count
+    likes: (state: likesAndDislikesSliceState) => {
+      return state.likes
+    },
+    dislikes: (state: likesAndDislikesSliceState) => {
+      return state.dislikes
     },
   },
 })
 
-export const feedbackLikesSliceSelectors = feedbackLikesSlice.selectors
-export const feedbackLikesSliceActions = feedbackLikesSlice.actions
-
-export const feedbackDislikesSliceSelectors = feedbackDislikesSlice.selectors
-export const feedbackDislikesSliceActions = feedbackDislikesSlice.actions
+export const feedbackSliceSelectors = feedbackSlice.selectors
+export const feedbackSliceActions = feedbackSlice.actions

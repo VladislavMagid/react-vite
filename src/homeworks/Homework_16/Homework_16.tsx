@@ -1,30 +1,28 @@
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import Feedback from "components/Feedback/Feedback"
 import {
-  feedbackLikesSliceSelectors,
-  feedbackLikesSliceActions,
-  feedbackDislikesSliceSelectors,
-  feedbackDislikesSliceActions,
+  feedbackSliceSelectors,
+  feedbackSliceActions,
 } from "store/redux/feedback/feedbackSlice"
 
 import { PageWrapper } from "./styles"
 
 function Homework_16() {
   const dispatch = useAppDispatch()
-  const countOfLikes = useAppSelector(feedbackLikesSliceSelectors.count)
-  const countOfDislikes = useAppSelector(feedbackDislikesSliceSelectors.count)
+  const countOfLikes = useAppSelector(feedbackSliceSelectors.likes)
+  const countOfDislikes = useAppSelector(feedbackSliceSelectors.dislikes)
 
   const onLike = () => {
-    dispatch(feedbackLikesSliceActions.like())
+    dispatch(feedbackSliceActions.like())
   }
 
   const onDislike = () => {
-    dispatch(feedbackDislikesSliceActions.dislike())
+    dispatch(feedbackSliceActions.dislike())
   }
 
   const onReset = () => {
-    dispatch(feedbackLikesSliceActions.recetLikes())
-    dispatch(feedbackDislikesSliceActions.recetDislikes())
+    dispatch(feedbackSliceActions.recetResults())
+    
   }
   return (
     <PageWrapper>
